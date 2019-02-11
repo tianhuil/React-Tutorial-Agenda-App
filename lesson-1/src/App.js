@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
-import { MDBContainer, MDBRow, MDBCol } from "mdbreact";
+import { MDBBtn, MDBContainer, MDBRow, MDBCol } from "mdbreact";
 import Event from './components/Event';
+import Modal from './components/Modal';
 
 class App extends Component {
   constructor(props) {
     super(props)
     this.state = {
+      isModalOpen: false,
       events: [
         {
           id: 1,
@@ -38,6 +40,12 @@ class App extends Component {
     this.setState({events});
   }
 
+  toggleModal() {
+    this.setState({
+      isModalOpen: !this.state.isModalOpen
+    })
+  }
+
   render() {
     return <React.Fragment>
       <MDBContainer>
@@ -62,6 +70,21 @@ class App extends Component {
           </MDBCol>
         </MDBRow>
       </MDBContainer>
+
+      <div className="d-flex justify-content-center">
+        <MDBBtn
+          color="info"
+          rounded onClick={this.toggleModal.bind(this)}
+          className=""
+        >
+          Add Event
+        </MDBBtn>
+      </div>
+
+      <Modal
+        isOpen={this.state.isModalOpen}
+        toggle={this.toggleModal.bind(this)}
+      ></Modal>
     </React.Fragment>;
   }
 }
