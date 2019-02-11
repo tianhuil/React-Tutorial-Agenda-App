@@ -32,15 +32,12 @@ class App extends Component {
       ]
     }
   }
-  style = {
-      fontSize: 16,
-      border: "1px solid black"
-  }
+
   render() {
       return <React.Fragment>
           <MDBContainer>
               <MDBRow>
-                  <MDBCol style={this.style} lg="9">
+                  <MDBCol lg="9">
                     {
                       this.state.events.map(event => 
                         <Event
