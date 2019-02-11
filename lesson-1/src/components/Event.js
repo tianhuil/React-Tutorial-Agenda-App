@@ -1,7 +1,5 @@
 import React, {Component} from 'react';
-import {MDBBtn, MDBInput, MDBModal, MDBModalBody, MDBModalHeader,
-  MDBModalFooter, MDBIcon, MDBBadge, MDBContainer, MDBRow, MDBCol}
-  from "mdbreact";
+import {MDBIcon, MDBBadge} from "mdbreact";
 
 class Event extends Component {
   render() {
