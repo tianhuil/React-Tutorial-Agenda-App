@@ -35,9 +35,21 @@ class App extends Component {
     }
   }
 
-  handleDelete(eventId) {
+  deleteEvent(eventId) {
     const events = this.state.events.filter(e => e.id != eventId);
     this.setState({events});
+  }
+
+  addEvent(eventData) {
+    const newEvents = [
+      ...this.state.events,
+      {
+        ...eventData,
+        id: Math.max(...this.state.events.map(e => e.id)) + 1
+      }
+    ]
+
+    this.setState({events: newEvents})
   }
 
   toggleModal() {
@@ -60,7 +72,7 @@ class App extends Component {
                   title={event.title}
                   location={event.location}
                   description={event.description}
-                  onDelete={this.handleDelete.bind(this)}
+                  onDelete={this.deleteEvent.bind(this)}
                 />
               )
             }
@@ -84,6 +96,7 @@ class App extends Component {
       <Modal
         isOpen={this.state.isModalOpen}
         toggle={this.toggleModal.bind(this)}
+        addEvent={this.addEvent.bind(this)}
       ></Modal>
     </React.Fragment>;
   }
