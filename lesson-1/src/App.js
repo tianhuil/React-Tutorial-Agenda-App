@@ -36,7 +36,7 @@ class App extends Component {
   }
 
   deleteEvent(eventId) {
-    const events = this.state.events.filter(e => e.id != eventId);
+    const events = this.state.events.filter(e => e.id !== eventId);
     this.setState({events});
   }
 
