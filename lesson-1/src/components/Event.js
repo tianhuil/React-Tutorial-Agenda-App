@@ -6,7 +6,7 @@ import {MDBBtn, MDBInput, MDBModal, MDBModalBody, MDBModalHeader,
 class Event extends Component {
     render() {
         return (<React.Fragment>
-            <div className="media mt-1">
+            <div className="media mt-1 mb-4">
                 <h3 className="h3-responsive font-weight-bold mr-3">
                     {this.props.time}
                 </h3>
@@ -25,8 +25,8 @@ class Event extends Component {
                         </p>
                     }
                     {this.props.description && 
-                        <div className="p-2 mb-4 blue-grey lighten-5">
-                            <p>Desc: {this.props.description}</p>
+                        <div className="p-2 blue-grey lighten-5">
+                            <p className="m-0">Desc: {this.props.description}</p>
                         </div>
                     }
                 </div>
