@@ -1,19 +1,65 @@
 import React, { Component } from 'react';
-import { Button } from "mdbreact";
-import logo from './logo.png';
+import { MDBContainer, MDBRow, MDBCol } from "mdbreact";
+import Event from './components/Event';
 
 class App extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      events: [
+        {
+          id: 1,
+          time: "10:00",
+          title: "Breakfast with Simon",
+          location: "Lounge Caffe",
+          description: "Discuss Q3 targets"
+        },
+        {
+          id: 2,
+          time: "10:30",
+          title: "Daily Standup Meeting (recurring)",
+          location: "Warsaw Spire Office"
+        },
+        { id: 3, time: "11:00", title: "Call with HRs" },
+        {
+          id: 4,
+          time: "11:00",
+          title: "Lunch with Timmoty",
+          location: "Canteen",
+          description:
+            "Project evalutation ile declaring a variable and using an if statement is a fine way to conditionally render a component, sometimes you might want to use a"
+        }
+      ]
+    }
+  }
+  style = {
+      fontSize: 16,
+      border: "1px solid black"
+  }
   render() {
-    return (
-      <div className="App">
-        <header className="App-header ">
-          <img src={logo} alt="logo" className="App-logo" />
-          <h1 className="App-title">Welcome to Your MDB React App</h1>
-        </header>
-        <p className="mb-2">The application is configured and ready to import our components.</p>
-        <Button href="https://mdbootstrap.com/react/" target="blank" color="light-blue"><strong>Check out our docs!</strong></Button>
-      </div>
-    );
+      return <React.Fragment>
+          <MDBContainer>
+              <MDBRow>
+                  <MDBCol style={this.style} lg="9">
+                    {
+                      this.state.events.map(event => 
+                        <Event
+                          key={event.id}
+                          id={event.id}
+                          time={event.time}
+                          title={event.title}
+                          location={event.location}
+                          description={event.description}
+                        />
+                      )
+                    }
+                  </MDBCol>
+                  <MDBCol style={this.style} lg="3">
+                    
+                  </MDBCol>
+              </MDBRow>
+          </MDBContainer>
+      </React.Fragment>;
   }
 }
 
