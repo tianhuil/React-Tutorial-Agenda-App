@@ -33,30 +33,36 @@ class App extends Component {
     }
   }
 
+  handleDelete(eventId) {
+    const events = this.state.events.filter(e => e.id != eventId);
+    this.setState({events});
+  }
+
   render() {
-      return <React.Fragment>
-          <MDBContainer>
-              <MDBRow>
-                  <MDBCol lg="9">
-                    {
-                      this.state.events.map(event => 
-                        <Event
-                          key={event.id}
-                          id={event.id}
-                          time={event.time}
-                          title={event.title}
-                          location={event.location}
-                          description={event.description}
-                        />
-                      )
-                    }
-                  </MDBCol>
-                  <MDBCol style={this.style} lg="3">
-                    
-                  </MDBCol>
-              </MDBRow>
-          </MDBContainer>
-      </React.Fragment>;
+    return <React.Fragment>
+      <MDBContainer>
+        <MDBRow>
+          <MDBCol lg="9">
+            {
+              this.state.events.map(event => 
+                <Event
+                  key={event.id}
+                  id={event.id}
+                  time={event.time}
+                  title={event.title}
+                  location={event.location}
+                  description={event.description}
+                  onDelete={this.handleDelete.bind(this)}
+                />
+              )
+            }
+          </MDBCol>
+          <MDBCol style={this.style} lg="3">
+            
+          </MDBCol>
+        </MDBRow>
+      </MDBContainer>
+    </React.Fragment>;
   }
 }
 
